@@ -5,6 +5,9 @@ import urllib.request
 import cv2
 import streamlit.components.v1 as components
 
+
+st.set_page_config(layout='centered')
+
 st.cache()
 def download_model():
     url = 'https://github.com/mazy06000/topic-modeling-image-labeling/releases/download/model/image_labeling_model.h5'
