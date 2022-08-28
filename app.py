@@ -12,7 +12,7 @@ def download_model():
     urllib.request.urlretrieve(url, filename)
 
 if "model" not in st.session_state:
-    download_model()
+    # download_model()
     st.session_state['model'] = tf.keras.models.load_model("image_labeling_model.h5")
 
 CLASSES = ['drink', 'food', 'interior', 'menu', 'outside']
@@ -26,7 +26,7 @@ with header:
 
 with uploading:
 
-    image_uploaded = st.file_uploader("Choose a street image")
+    image_uploaded = st.file_uploader("Choose an image between: drink, food, interior, menu, outside")
 
     if image_uploaded is not None:
 
