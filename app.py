@@ -6,13 +6,13 @@ import cv2
 import streamlit.components.v1 as components
 
 st.cache()
-def download_doc2vec_vectores():
-    url = 'https://github.com/mazy06000/negative-reviews-detection/releases/download/model/doc2vec_model.dv.vectors.npy'
+def download_model():
+    url = 'https://github.com/mazy06000/topic-modeling-image-labeling/releases/download/model/image_labeling_model.h5'
     filename = url.split('/')[-1]
     urllib.request.urlretrieve(url, filename)
 
 if "model" not in st.session_state:
-    # download_doc2vec_vectores()
+    download_model()
     st.session_state['model'] = tf.keras.models.load_model("image_labeling_model.h5")
 
 CLASSES = ['drink', 'food', 'interior', 'menu', 'outside']
