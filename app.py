@@ -4,6 +4,7 @@ import numpy as np
 import urllib.request
 import cv2
 import streamlit.components.v1 as components
+import os.path
 
 
 st.set_page_config(layout='centered')
@@ -15,7 +16,8 @@ def download_model():
     urllib.request.urlretrieve(url, filename)
 
 if "model" not in st.session_state:
-    # download_model()
+    if not os.path.exists("image_labeling_model.h5"):
+        download_model()
     st.session_state['model'] = tf.keras.models.load_model("image_labeling_model.h5")
 
 CLASSES = ['drink', 'food', 'interior', 'menu', 'outside']
